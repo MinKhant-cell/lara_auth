@@ -17,6 +17,12 @@
                                     </p>
                                 </div>
                                 <p>{{ \Illuminate\Support\Str::words($article->description,30) }}</p>
+                                @isset($article->photo)
+                                    @foreach($article->photo as $photo)
+                                        <img src="{{ asset('storage/images/'.$photo->name) }}" class="article-photo" alt="">
+                                    @endforeach
+                                @endisset
+
                                 <div>
                                     <a href="{{ route('article.edit',$article->id) }}" class="btn btn-outline-warning">Edit</a>
                                     <a href="{{ route('article.show',$article->id) }}" class="btn btn-outline-info">Show</a>

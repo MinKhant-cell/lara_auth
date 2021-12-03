@@ -24,7 +24,7 @@
                         </ul>
                     </div>
                 @endif
-                <form class="" action="{{ route('article.store') }}" method="post">
+                <form class="" action="{{ route('article.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div>
                         <label for="" class="form-label">Article</label>
@@ -40,7 +40,10 @@
                             @endforeach
                         </select>
                     </div>
-
+                    <div>
+                        <label for="" class="form-label my-3">Upload Photo</label>
+                        <input type="file" class="form-control mb-3" name="photo[]" multiple>
+                    </div>
                     <div>
                         <label for="" class="form-label">Description</label>
                         <textarea name="description" rows="7" class="form-control">{{ old('description') }}</textarea>

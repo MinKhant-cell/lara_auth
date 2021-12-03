@@ -36,10 +36,13 @@ class PhotoController extends Controller
      */
     public function store(StorePhotoRequest $request)
     {
-        $ext = $request->file('photo')->getClientOriginalExtension();
-        $newName = uniqid()."_photo.".$ext;
-        $photo = $request->file('photo')->storeAs('public/images',$newName);
-        return $newName;
+        foreach ($request->photo as $photo){
+            $ext = $photo->getClientOriginalExtension();
+            $newName = uniqid()."_photo.".$ext;
+            $photo = $photo->storeAs('public/images',$newName);
+        }
+        return "Success";
+
     }
 
     /**
